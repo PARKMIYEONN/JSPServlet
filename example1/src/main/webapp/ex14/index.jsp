@@ -10,8 +10,8 @@
 <body>
 <c:set var = "product" value="<b>Apple Iphone</b>" />
 <c:set var = "intArray" value="${[1,2,3,4,5]}" />
-<c:forEach var="num" varStatus="i" items="${intArray }">
-${i.index} : ${num}
+<c:forEach var="num" varStatus="i" items="${intArray}">
+${i.index} : ${num}<br>
 </c:forEach>
 </body>
 </html>
