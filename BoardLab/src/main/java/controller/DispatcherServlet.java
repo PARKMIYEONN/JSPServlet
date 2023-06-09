@@ -42,6 +42,8 @@ public class DispatcherServlet extends HttpServlet {
 	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
+		path = path.replace(".do", ".jsp");
+		response.sendRedirect(path);
 		
 		Controller ctrl = mapping.getController(path);
 		String viewPage = ctrl.handelRequest(request, response);
