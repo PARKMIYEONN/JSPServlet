@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Web Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         table {
             width: 100%;
@@ -16,7 +17,7 @@
         }
 
         img {
-            max-width: 100%;
+            max-width: 200px;
             height: auto;
         }
 
@@ -27,24 +28,29 @@
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td rowspan="2" style="width: 300px;"><a href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="빵미도서관"></a></td>
-            <td class="right-align">
-                <span>즐겨찾기</span>
-                <c:if test="${not empty loginUser}">
-                    [<c:out value="${loginUser.name}"/>(${loginUser.id})님 로그인중...]
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="/webLib/myinfo.do">| 내정보</a> |
-                    <a href="/webLib/mybooks.do">대여 목록 |</a>
-                    <a href="/webLib/deleteuser.do">회원 탈퇴</a> |
-           
-            </td>
-        </tr>
-    </table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="빵미도서관"></a>
+        <span class="navbar-text">
+            <c:if test="${not empty loginUser}">
+                <c:out value="${loginUser.name}"/>(${loginUser.id})님 안녕하세요^^
+            </c:if>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/webLib/main.do">홈</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/webLib/myinfo.do">내정보</a></li>
+                <li class="nav-item"><a class="nav-link" href="/webLib/mybooks.do">대여 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/webLib/deleteuser.do">회원 탈퇴</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

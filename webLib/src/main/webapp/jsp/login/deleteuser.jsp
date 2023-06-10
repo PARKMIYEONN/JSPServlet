@@ -12,24 +12,24 @@
 	<header>
 		<jsp:include page="/jsp/include/topMenu.jsp"/>
 	</header>
-	<section>
-  
-  <h1>È¸¿øÅ»Åð</h1>
+<section>
+    <h1>È¸¿øÅ»Åð</h1>
     <form action="deleteuserprocess.do" method="POST">
-    <input type="hidden" name="id" value="${ loginUser.id }">
-        <div>
+        <input type="hidden" name="id" value="${loginUser.id}">
+        <div class="form-group">
             <label for="currentPassword">ÇöÀç ºñ¹Ð¹øÈ£:</label>
-            <input type="password" id="currentPassword" name="password" required>
+            <input type="password" class="form-control" id="currentPassword" name="password" required>
         </div>
-        <div>
+        <div class="form-group">
             <label for="confirmPassword">ºñ¹Ð¹øÈ£ È®ÀÎ:</label>
-            <input type="password" id="confirmPassword" name="pwcheck" required>
+            <input type="password" class="form-control" id="confirmPassword" name="pwcheck" required>
         </div>
-        <div>
-            <input type="submit" value="È¸¿øÅ»Åð">
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" value="È¸¿øÅ»Åð">
         </div>
     </form>
 </section>
+
 	<footer>
 		<%@ include file="/jsp/include/bottom.jsp" %>
 	</footer>

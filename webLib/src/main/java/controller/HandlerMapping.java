@@ -13,6 +13,7 @@ import controller.book.MyBooksController;
 import controller.rental.RentBookController;
 import controller.rental.RentalListController;
 import controller.rental.ReturnBookController;
+import controller.user.CheckDuplicationController;
 import controller.user.DeleteUserController;
 import controller.user.DeleteUserProcessController;
 import controller.user.InsertUserController;
@@ -53,6 +54,7 @@ public class HandlerMapping {
 		mappings.put("/mybooks.do", new MyBooksController());
 		mappings.put("/usermanager.do", new UserManagerController());
 		mappings.put("/rentallist.do", new RentalListController());
+		mappings.put("/duplicatecheckid.do", new CheckDuplicationController());
 	}
 	
 	public Controller getController(String path) {

@@ -12,68 +12,64 @@
 	<header>
 		<jsp:include page="/jsp/include/topMenu.jsp"/>
 	</header>
-	<section>
-		<h1>도서 목록</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>도서 번호 |</th>
-					<th>도서 제목 |</th>
-					<th>글 쓴 이 |</th>
-					<th>출 판 사 |</th>
-					<c:if test="${ loginUser.no eq '1' }"><th>대출 여부 |</th></c:if>
-					<c:if test="${ loginUser.no != '1' }"><th>대 출 |</th></c:if>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="book" items="${sbook}">
-					<tr>
-						<td>${book.bookNO}</td>
-						<td>${book.bookTitle}</td>
-						<td>${book.bookWriter}</td>
-						<td>${book.bookPublisher}</td>
-						<c:if test="${ loginUser.no eq '1' }">
-						<td>
-						<c:choose>
-								<c:when test="${book.rented_book eq '1'}">
-                                        대출 중
+<section>
+    <div class="container">
+        <h1>도서 목록</h1>
+        <div class="row">
+            <c:forEach var="book" items="${sbook}">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">${book.bookTitle}</h5>
+                            <p class="card-text">도서 번호: ${book.bookNO}</p>
+                            <p class="card-text">글 쓴 이: ${book.bookWriter}</p>
+                            <p class="card-text">출 판 사: ${book.bookPublisher}</p>
+                            <c:if test="${loginUser.no eq '1'}">
+                                <p class="card-text">
+                                    <c:choose>
+                                        <c:when test="${book.rented_book eq '1'}">
+                                            대출 여부: 대출 중
+                                        </c:when>
+                                        <c:otherwise>
+                                            대출 여부: 도서 보유 중
+                                        </c:otherwise>
+                                    </c:choose>
+                                </p>
+                            </c:if>
+                            <c:if test="${loginUser.no != '1'}">
+                                <c:choose>
+                                    <c:when test="${book.rented_book eq '1'}">
+                                        <p class="card-text">대출 여부: 대출 불가</p>
                                     </c:when>
-								<c:otherwise>
-                                        도서 보유 중
+                                    <c:otherwise>
+                                        <form action="rentbook.do" method="POST">
+                                            <input type="hidden" name="bookNO" value="${book.bookNO}">
+                                            <input type="hidden" name="id" value="${loginUser.id}">
+                                            <input type="submit" class="btn btn-primary" value="대출하기">
+                                        </form>
                                     </c:otherwise>
-							</c:choose></td></c:if>
-						<c:if test="${ loginUser.no != '1' }"><td>
-						<c:choose>
-								<c:when test="${book.rented_book eq '1'}">
-            					대출 불가
-        						</c:when>
-								<c:otherwise>
-							<form action="rentbook.do" method="POST">
-								<input type="hidden" name="bookNO" value="${ book.bookNO }">
-								<input type="hidden" name="id" value="${ loginUser.id }">
-								<input type="submit" value="대출하기">
-							</form>
-								</c:otherwise>
-							</c:choose>
-							</td></c:if>
-							
-							<c:if test="${ loginUser.no eq '1' }">
-							<c:if test="${ book.rented_book eq '0' }"><td>
-							 <form action="deletebook.do" method="post" onsubmit="return confirm('삭제하시겠습니까?');">
-                            <input type="hidden" name="bookNO" value="${book.bookNO}" />
-                            <input type="submit" value="삭제" />
-                     		</form></td>
-							</c:if>
-							</c:if>
-							
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+                                </c:choose>
+                            </c:if>
+                            <c:if test="${loginUser.no eq '1'}">
+                                <c:if test="${book.rented_book eq '0'}">
+                                    <form action="deletebook.do" method="post" onsubmit="return confirm('삭제하시겠습니까?');">
+                                        <input type="hidden" name="bookNO" value="${book.bookNO}" />
+                                        <input type="submit" class="btn btn-danger" value="삭제" />
+                                    </form>
+                                </c:if>
+                            </c:if>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
 
-	</section>
+
+
 	<footer>
 		<%@ include file="/jsp/include/bottom.jsp" %>
 	</footer>
 </body>
-</html>		
+</html>

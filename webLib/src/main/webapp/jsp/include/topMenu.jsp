@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>My Web Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         table {
             width: 100%;
@@ -16,7 +17,7 @@
         }
 
         img {
-            max-width: 100%;
+            max-width: 200px;
             height: auto;
         }
 
@@ -27,41 +28,61 @@
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td rowspan="2" style="width: 300px;"><a href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="»§¹Ìµµ¼­°ü"></a></td>
-            <td class="right-align">
-            <span></span>
-                <c:if test="${not empty loginUser}">
-                    [<c:out value="${loginUser.name}"/>(${loginUser.id})´Ô ¾È³çÇÏ¼¼¿ä]
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="/webLib/booksearch.do">µµ¼­°Ë»ö</a> |
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="ë¹µë¯¸ë„ì„œê´€"></a>
+        <span class="navbar-text">
+            <c:if test="${not empty loginUser}">
+                <c:out value="${loginUser.name}"/>(${loginUser.id})ë‹˜ ì•ˆë…•í•˜ì„¸ìš”^^
+            </c:if>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/webLib/main.do">í™ˆ</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webLib/booksearch.do">ë„ì„œê²€ìƒ‰</a>
+                </li>
                 <c:if test="${loginUser.no eq '1'}">
-                    <a href="/webLib/usermanager.do">È¸¿ø¸ñ·Ï |</a>
-                    <a href="/webLib/rentallist.do">´ë¿© È¸¿ø ¸ñ·Ï</a> |
-                    <a href="/webLib/insertbook.do">µµ¼­µî·Ï</a> |
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/usermanager.do">íšŒì›ëª©ë¡</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/rentallist.do">ëŒ€ì—¬ íšŒì› ëª©ë¡</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/insertbook.do">ë„ì„œë“±ë¡</a>
+                    </li>
                 </c:if>
-                
-                    <c:if test="${empty loginUser}">
-                        <a href="/webLib/insertuser.do">È¸¿ø°¡ÀÔ</a> |
-                        <a href="/webLib/login.do">·Î±×ÀÎ</a> |
-                    </c:if>
-                    <c:if test="${ not empty loginUser }">
+                <c:if test="${empty loginUser}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/insertuser.do">íšŒì›ê°€ìž…</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/login.do">ë¡œê·¸ì¸</a>
+                    </li>
+                </c:if>
+                <c:if test="${ not empty loginUser }">
                     <c:if test="${ loginUser.no != '1' }">
-                        <a href="/webLib/mypage.do">¸¶ÀÌÆäÀÌÁö |</a>
-                       </c:if>
-                    
-                        <a href="/webLib/booklist.do">ÀüÃ¼ µµ¼­ ¸ñ·Ï</a> |
-                        <a href="/webLib/logout.do">·Î±×¾Æ¿ô</a> |
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webLib/mypage.do">ë§ˆì´íŽ˜ì´ì§€</a>
+                        </li>
                     </c:if>
-                
-            </td>
-        </tr>
-    </table>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/booklist.do">ì „ì²´ ë„ì„œ ëª©ë¡</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/webLib/logout.do">ë¡œê·¸ì•„ì›ƒ</a>
+                    </li>
+                </c:if>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 

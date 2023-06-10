@@ -126,5 +126,29 @@ public class UserDAO {
 		return userList;
 	}
 	
+    public boolean duplicateCheckId(String id) {
+        
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT INSTR(ID, ?), ID FROM members ");
+        
+        try(
+           Connection conn = new ConnectionFactory().getConnection();
+           PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+        ) {
+           
+           pstmt.setString(1, id);
+           ResultSet rs = pstmt.executeQuery();
+           
+           while(rs.next()) {
+              if(rs.getString("ID").equalsIgnoreCase(id))
+                 return true;
+           }
+           
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return false;
+     }
+	
 
 }

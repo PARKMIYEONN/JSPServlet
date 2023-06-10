@@ -26,12 +26,12 @@ public class LoginProcessController implements Controller{
 	      String msg = "";
 	      String url = "";
 	      if(user != null) {
-	         //request.setAttribute("loginUser", user);
 	         session.setAttribute("loginUser", user);
 	         msg = user.getName() + "님 환영합니다";
 	         url = "/webLib/main.do";
 	      } else {
-	         msg = "아이디 또는 패스워드가 잘못되었습니다";
+	      
+	         msg = "아이디와 패스워드를 확인해주세요";
 	         url = "/webLib/jsp/login/login.do";
 	      }
 	      
