@@ -11,6 +11,7 @@ import controller.book.InsertBookController;
 import controller.book.InsertBookProcessController;
 import controller.book.MyBooksController;
 import controller.rental.RentBookController;
+import controller.rental.RentalListController;
 import controller.rental.ReturnBookController;
 import controller.user.DeleteUserController;
 import controller.user.DeleteUserProcessController;
@@ -23,6 +24,7 @@ import controller.user.MyPageController;
 import controller.user.MyinfoController;
 import controller.user.UpdateInfoController;
 import controller.user.UpdateInfoProcessController;
+import controller.user.UserManagerController;
 
 public class HandlerMapping {
 	private Map<String, Controller> mappings;
@@ -49,6 +51,8 @@ public class HandlerMapping {
 		mappings.put("/mypage.do", new MyPageController());
 		mappings.put("/myinfo.do", new MyinfoController());
 		mappings.put("/mybooks.do", new MyBooksController());
+		mappings.put("/usermanager.do", new UserManagerController());
+		mappings.put("/rentallist.do", new RentalListController());
 	}
 	
 	public Controller getController(String path) {

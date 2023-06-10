@@ -16,7 +16,6 @@ public class UserVO {
 	}
 
 
-
 	public UserVO(int no, String id, String password, String name, String phoneNo, String birthDay) {
 		super();
 		this.no = no;
@@ -25,8 +24,8 @@ public class UserVO {
 		this.name = name;
 		this.phoneNo = phoneNo;
 		this.birthDay = birthDay;
+		
 	}
-
 
 
 	public int getNo() {
@@ -100,15 +99,10 @@ public class UserVO {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "UserVO [no=" + no + ", id=" + id + ", password=" + password + ", name=" + name + ", phoneNo=" + phoneNo
 				+ ", birthDay=" + birthDay + "]";
 	}
-	
-	
-	
-	
 
 }

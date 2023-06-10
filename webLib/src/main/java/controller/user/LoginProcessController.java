@@ -28,7 +28,7 @@ public class LoginProcessController implements Controller{
 	      if(user != null) {
 	         //request.setAttribute("loginUser", user);
 	         session.setAttribute("loginUser", user);
-	         msg = "로그인 성공";
+	         msg = user.getName() + "님 환영합니다";
 	         url = "/webLib/main.do";
 	      } else {
 	         msg = "아이디 또는 패스워드가 잘못되었습니다";

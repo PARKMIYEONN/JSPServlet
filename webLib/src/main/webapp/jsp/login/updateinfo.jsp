@@ -36,7 +36,7 @@
         <td><input type="text" name="phone" value="${loginUser.phoneNo}"></td>
       </tr>
       <tr>
-        <td>积老:</td>
+        <td>积斥岿老:</td>
         <td>"${loginUser.birthDay}"</td>
       </tr>
       <tr>

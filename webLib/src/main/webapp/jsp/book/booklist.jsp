@@ -21,7 +21,7 @@
 					<th>도서 제목 |</th>
 					<th>글 쓴 이 |</th>
 					<th>출 판 사 |</th>
-					<th>대출 여부 |</th>
+					<c:if test="${ loginUser.no eq '1' }"><th>대출 여부 |</th></c:if>
 					<c:if test="${ loginUser.no != '1' }"><th>대 출 |</th></c:if>
 				</tr>
 			</thead>
@@ -32,15 +32,17 @@
 						<td>${book.bookTitle}</td>
 						<td>${book.bookWriter}</td>
 						<td>${book.bookPublisher}</td>
-						<td><c:choose>
+						<c:if test="${ loginUser.no eq '1' }">
+						<td>
+						<c:choose>
 								<c:when test="${book.rented_book eq '1'}">
                                         대출 중
                                     </c:when>
 								<c:otherwise>
-                                        대출 가능
+                                        도서 보유 중
                                     </c:otherwise>
-							</c:choose></td>
-						<td><c:if test="${ loginUser.no != '1' }">
+							</c:choose></td></c:if>
+						<c:if test="${ loginUser.no != '1' }"><td>
 						<c:choose>
 								<c:when test="${book.rented_book eq '1'}">
             					대출 불가
@@ -53,27 +55,17 @@
 							</form>
 								</c:otherwise>
 							</c:choose>
-							</c:if></td>
-							<td>
+							</td></c:if>
+							
 							<c:if test="${ loginUser.no eq '1' }">
-							<c:if test="${ book.rented_book eq '0' }">
+							<c:if test="${ book.rented_book eq '0' }"><td>
 							 <form action="deletebook.do" method="post" onsubmit="return confirm('삭제하시겠습니까?');">
                             <input type="hidden" name="bookNO" value="${book.bookNO}" />
                             <input type="submit" value="삭제" />
-                     		</form>
+                     		</form></td>
 							</c:if>
 							</c:if>
-							</td>
-							<td>
-							<c:if test="${ loginUser.no != '1' }">
-							<c:if test="${ book.rented_book eq '1' }">
-							<form action="returnbook.do" method="POST">
-							<input type="hidden" name="bookNO" value="${ book.bookNO }">
-							<input type="submit" value="도서반납">
-							</form>
-							</c:if>
-							</c:if>
-							</td>
+							
 					</tr>
 				</c:forEach>
 			</tbody>

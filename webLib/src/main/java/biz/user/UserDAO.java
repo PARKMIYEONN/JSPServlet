@@ -3,6 +3,8 @@ package biz.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.ConnectionFactory;
 
@@ -96,5 +98,33 @@ public class UserDAO {
 		}
 		return user;
 	}
+	
+	public List<UserVO> allUsers(){
+		List<UserVO> userList = new ArrayList<>();
+		UserVO user = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("select no, name, phone_no, to_char(birthday, 'yyyy-mm-dd')as birthday from members where no != 1 order by no ");
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				user = new UserVO();
+				user.setNo(rs.getInt("no"));
+				user.setName(rs.getString("name"));
+				user.setPhoneNo(rs.getString("phone_no"));
+				user.setBirthDay(rs.getString("birthday"));
+				
+				userList.add(user);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
+	}
+	
 
 }

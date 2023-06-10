@@ -74,5 +74,41 @@ public class RentalDAO {
 		}
 		return rentalList;
 	}
+	
+	public List<RentalVO> rentallist() {
+		
+		List<RentalVO> rentalList = new ArrayList<>();
+		RentalVO rental = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select no, b.id, b.name, b.phone_no, a.b_no, b_title, b_writer, b_publisher, to_char(rnt_date,'yyyy-mm-dd')as rent_date, to_char((rnt_date + 14),'yyyy-mm-dd')as return_date ");
+		sql.append(" from rental a join members b on b.id = a.id join books c on c.b_no = a.b_no ");
+		sql.append(" group by no, b.id, b.name, b.phone_no, a.b_no, b_title, b_writer, b_publisher, rnt_date ");
+		
+		try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				){
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				rental = new RentalVO();
+				rental.setNo(rs.getInt("no"));
+				rental.setId(rs.getString("id"));
+				rental.setName(rs.getString("name"));
+				rental.setPhoneNo(rs.getString("phone_no"));				
+				rental.setBookNO(rs.getInt("b_no"));
+				rental.setBookTitle(rs.getString("b_title"));
+				rental.setBookWriter(rs.getString("b_writer"));
+				rental.setBookPublisher(rs.getString("b_publisher"));
+				rental.setRntDate(rs.getString("rent_date"));
+				rental.setRtDate(rs.getString("return_date"));
+				rentalList.add(rental);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rentalList;
+	}
+	
+
 
 }

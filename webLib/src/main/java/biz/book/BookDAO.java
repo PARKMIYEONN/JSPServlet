@@ -106,7 +106,7 @@ public class BookDAO {
 	
 	public void insertBook(BookVO book) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO books (B_no, b_title, b_writer, b_publisher) VALUES (SEQ_BOOKS_NO.nextval, ?, ?, ?)");
+		sql.append("INSERT INTO books (B_no, b_title, b_writer, b_publisher, rented_book) VALUES (SEQ_BOOKS_NO.nextval, ?, ?, ?, 0)");
 		try (Connection conn = new ConnectionFactory().getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, book.getBookTitle());

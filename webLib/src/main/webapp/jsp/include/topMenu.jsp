@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -29,32 +29,36 @@
 <body>
     <table>
         <tr>
-            <td rowspan="2" style="width: 300px;"><a href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="ë¹µë¯¸ë„ì„œê´€"></a></td>
+            <td rowspan="2" style="width: 300px;"><a href="/webLib/main.do"><img src="/webLib/jsp/include/bbangmilib.png" alt="»§¹Ìµµ¼­°ü"></a></td>
             <td class="right-align">
-                <span>ì¦ê²¨ì°¾ê¸°</span>
+            <span></span>
                 <c:if test="${not empty loginUser}">
-                    [<c:out value="${loginUser.name}"/>(${loginUser.id})ë‹˜ ë¡œê·¸ì¸ì¤‘...]
+                    [<c:out value="${loginUser.name}"/>(${loginUser.id})´Ô ¾È³çÇÏ¼¼¿ä]
                 </c:if>
             </td>
         </tr>
         <tr>
             <td>
-                <a href="/webLib/booksearch.do">ë„ì„œê²€ìƒ‰</a> |
+                <a href="/webLib/booksearch.do">µµ¼­°Ë»ö</a> |
                 <c:if test="${loginUser.no eq '1'}">
-                    íšŒì›ê´€ë¦¬ |
-                    <a href="/webLib/insertbook.do">ë„ì„œë“±ë¡</a> |
+                    <a href="/webLib/usermanager.do">È¸¿ø¸ñ·Ï |</a>
+                    <a href="/webLib/rentallist.do">´ë¿© È¸¿ø ¸ñ·Ï</a> |
+                    <a href="/webLib/insertbook.do">µµ¼­µî·Ï</a> |
                 </c:if>
-                <c:choose>
-                    <c:when test="${empty loginUser}">
-                        <a href="/webLib/insertuser.do">íšŒì›ê°€ìž…</a> |
-                        <a href="/webLib/login.do">ë¡œê·¸ì¸</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="/webLib/mypage.do">ë§ˆì´íŽ˜ì´ì§€ |</a>
-                        <a href="/webLib/logout.do">ë¡œê·¸ì•„ì›ƒ</a> |
-                        <a href="/webLib/booklist.do">ì „ì²´ ë„ì„œ ëª©ë¡</a> |
-                    </c:otherwise>
-                </c:choose>
+                
+                    <c:if test="${empty loginUser}">
+                        <a href="/webLib/insertuser.do">È¸¿ø°¡ÀÔ</a> |
+                        <a href="/webLib/login.do">·Î±×ÀÎ</a> |
+                    </c:if>
+                    <c:if test="${ not empty loginUser }">
+                    <c:if test="${ loginUser.no != '1' }">
+                        <a href="/webLib/mypage.do">¸¶ÀÌÆäÀÌÁö |</a>
+                       </c:if>
+                    
+                        <a href="/webLib/booklist.do">ÀüÃ¼ µµ¼­ ¸ñ·Ï</a> |
+                        <a href="/webLib/logout.do">·Î±×¾Æ¿ô</a> |
+                    </c:if>
+                
             </td>
         </tr>
     </table>

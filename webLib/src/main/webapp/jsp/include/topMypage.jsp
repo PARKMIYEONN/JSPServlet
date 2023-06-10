@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <td>
-                <a href="/webLib/myinfo.do">내정보</a> |
+                <a href="/webLib/myinfo.do">| 내정보</a> |
                     <a href="/webLib/mybooks.do">대여 목록 |</a>
                     <a href="/webLib/deleteuser.do">회원 탈퇴</a> |
            
