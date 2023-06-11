@@ -103,7 +103,7 @@ public class UserDAO {
 		List<UserVO> userList = new ArrayList<>();
 		UserVO user = null;
 		StringBuilder sql = new StringBuilder();
-		sql.append("select no, name, phone_no, to_char(birthday, 'yyyy-mm-dd')as birthday from members where no != 1 order by no ");
+		sql.append("select no, id, name, phone_no, to_char(birthday, 'yyyy-mm-dd')as birthday from members where no != 1 order by no ");
 		try (
 				Connection conn = new ConnectionFactory().getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -112,6 +112,7 @@ public class UserDAO {
 			while(rs.next()) {
 				user = new UserVO();
 				user.setNo(rs.getInt("no"));
+				user.setId(rs.getString("id"));
 				user.setName(rs.getString("name"));
 				user.setPhoneNo(rs.getString("phone_no"));
 				user.setBirthDay(rs.getString("birthday"));

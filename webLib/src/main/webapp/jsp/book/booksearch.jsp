@@ -15,21 +15,26 @@
 <section>
     <div class="container">
         <h1>도서 검색</h1>
-        <form action="booksearchprocess.do" method="POST">
-            <div class="form-group">
-                <label for="title">도서 제목</label>
-                <input type="text" class="form-control" id="title" name="title">
+        <form action="booksearchprocess.do" method="POST" class="mb-4">
+            <div class="form-inline">
+                <select class="form-control mr-2" id="searchBy" name="searchBy">
+                	<option value="all" selected>통합 검색</option>
+                    <option value="title">도서제목</option>
+                    <option value="writer">글쓴이</option>
+                    <option value="publisher">출판사</option>
+                </select>
+                <input type="text" class="form-control mr-2" id="title" name="title">
+                <button type="submit" class="btn btn-warning" style="border-color: #FFC107;">검색</button>
             </div>
-            <button type="submit" class="btn btn-primary mb-4">검색</button>
         </form>
     </div>
-    
-            <div class="container">
-    <c:choose>
-        <c:when test="${empty sbook}">
-            <p>검색 결과가 없습니다.</p>
-        </c:when>
-        <c:otherwise>
+
+    <div class="container mt-4">
+        <c:choose>
+            <c:when test="${empty sbook}">
+                <p>검색 결과가 없습니다.</p>
+            </c:when>
+            <c:otherwise>
                 <div class="row">
                     <c:forEach var="book" items="${sbook}">
                         <div class="col-md-4 mb-4">
@@ -78,10 +83,13 @@
                         </div>
                     </c:forEach>
                 </div>
-        </c:otherwise>
-    </c:choose>
-            </div>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </section>
+
+
+
 
 
 

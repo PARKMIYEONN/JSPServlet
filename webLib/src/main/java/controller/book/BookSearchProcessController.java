@@ -16,21 +16,12 @@ public class BookSearchProcessController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String book = request.getParameter("title");
-		HttpSession session = request.getSession();
+		String option = request.getParameter("searchBy");
 		
 		BookDAO dao = new BookDAO();
-		List<BookVO> sbook = dao.selectByAll(book);
+		List<BookVO> sbook = dao.searchBooks(option, book);
 		
-		
-		String msg = "";
-//		if(sbook != null) {
 			request.setAttribute("sbook", sbook);
-//			session.setAttribute("sbook", sbook);
-			msg = "검색된 내역입니다.";
-//			String url = "/webLib/book/booksearch.do";
-//		} else {
-//			msg = "검색된 책이 없습니다.";
-//		}
 		
 		return "/jsp/book/booksearch.jsp";
 		
