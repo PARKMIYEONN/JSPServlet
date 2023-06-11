@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">비밀번호:</label>
-                    <input type="password" id="password" name="password" class="form-control" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')">
+                    <input type="password" id="password" name="password" class="form-control" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')" placeholder="최대 16자리">
                 </div>
                 <div class="form-group">
                     <label for="name">이름:</label>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">전화번호:</label>
-                    <input type="text" id="phone" name="phone" class="form-control" required oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" oninput="this.setCustomValidity('')">
+                    <input type="text" id="phone" name="phone" class="form-control" required oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" oninput="this.setCustomValidity('')" placeholder="ex) 010-0000-0000">
                 </div>
                 <div class="form-group">
                     <label for="birthday">생년월일:</label>
