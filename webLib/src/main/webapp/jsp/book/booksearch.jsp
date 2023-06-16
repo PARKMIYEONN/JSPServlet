@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>도서 검색</title>
 <link rel="stylesheet" href="/webLib/css/layout.css">
 </head>
 <body>
@@ -48,14 +48,27 @@
                                         <p class="card-text">
                                             <c:choose>
                                                 <c:when test="${book.rented_book eq '1'}">
-                                                    대출 여부: 대출 중
+                                                    대출 중
                                                 </c:when>
                                                 <c:otherwise>
-                                                    대출 여부: 도서 보유 중
+                                                    도서 보유 중
                                                 </c:otherwise>
                                             </c:choose>
                                         </p>
                                     </c:if>
+                                    <c:if test="${ empty loginUser }">
+                                        <p class="card-text">
+                                            <c:choose>
+                                                <c:when test="${book.rented_book eq '1'}">
+                                                    대출 중
+                                                </c:when>
+                                                <c:otherwise>
+                                                    도서 보유 중
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p>
+                                    </c:if>
+                                    <c:if test="${not empty loginUser }">
                                     <c:if test="${loginUser.no != '1'}">
                                         <c:choose>
                                             <c:when test="${book.rented_book eq '1'}">
@@ -69,6 +82,7 @@
                                                 </form>
                                             </c:otherwise>
                                         </c:choose>
+                                    </c:if>
                                     </c:if>
                                     <c:if test="${loginUser.no eq '1'}">
                                         <c:if test="${book.rented_book eq '0'}">

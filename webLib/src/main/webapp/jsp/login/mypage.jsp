@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title her
-</title>
+<title>마이페이지</title>
 <link rel="stylesheet" href="/webLib/css/layout.css">
 </head>
 <body>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>도서 등록</title>
 <link rel="stylesheet" href="/webLib/css/layout.css">
 </head>
 <body>

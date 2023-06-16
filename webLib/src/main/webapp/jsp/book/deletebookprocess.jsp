@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>도서 삭제</title>
 <script>
    alert('${msg}')
    location.href = '${ url }';

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>전체 도서 목록</title>
 <link rel="stylesheet" href="/webLib/css/layout.css">
 </head>
 <body>

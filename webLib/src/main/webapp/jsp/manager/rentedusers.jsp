@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>대출중인 회원 목록</title>
 <link rel="stylesheet" href="/webLib/css/layout.css">
 </head>
 <body>

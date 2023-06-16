@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="EUC-KR">
-    <title>Insert title here</title>
+    <title>로그인</title>
     <link rel="stylesheet" href="/webLib/css/layout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="EUC-KR">
-    <title>Insert title here</title>
+    <title>내정보</title>
     <link rel="stylesheet" href="/webLib/css/layout.css">
     <!-- 추가한 부트스트랩 CSS 링크 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

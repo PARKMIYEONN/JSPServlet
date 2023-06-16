@@ -130,8 +130,8 @@ public class UserDAO {
     public boolean duplicateCheckId(String id) {
         
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT INSTR(ID, ?), ID FROM members ");
-        
+        sql.append("select id from members where id = ? ");
+        boolean rtn = false;
         try(
            Connection conn = new ConnectionFactory().getConnection();
            PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -141,14 +141,17 @@ public class UserDAO {
            ResultSet rs = pstmt.executeQuery();
            
            while(rs.next()) {
-              if(rs.getString("ID").equalsIgnoreCase(id))
-                 return true;
+              if(rs.getString("id").equalsIgnoreCase(id)) {
+                 rtn = true;
+                 break;
+              }
+             
            }
            
         } catch (Exception e) {
            e.printStackTrace();
         }
-        return false;
+        return rtn;
      }
 	
 

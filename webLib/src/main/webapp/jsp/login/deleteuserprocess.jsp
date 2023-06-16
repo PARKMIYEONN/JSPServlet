@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>회원 탈퇴</title>
 <script>
    alert('${msg}')
    location.href = '${ url }';
